@@ -1,0 +1,34 @@
+Notes:
+
+I get this warning when compiling ResizingArrayRandomQueue, when following the example code on the slides.
+
+Note: ResizingArrayRandomQueue.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+
+When compiled with Xlint it tells me that using (new Object) is an unchecked cast. I am unsure what that means.
+The code still works though despite the warning.
+
+Question 1 Writeup:
+
+    This script ended up being more difficult than I was expecting. I started with the example stack and queue code from the class slides but ultimately ended up rewriting pretty much all of it. I kept running into issues where the loops would end early after thinking the list was empty. Either the front half or the back half would end up null at some point when it should have continued to follow its next or previous node. 
+    I learned that this was because I initiated both first and last to null. Although I had set first's next node to last, last's previous to first and eventually updated first and last from null, there would be a moment in the code where all of first's nodes, or all of last's nodes would eventually find the original first and last node that pointed to null. This issue took me quite a while to figure out and ultimately ended up being as simple as initiating last to null and initating the first node as the last node so they both point to the same final node.
+    The only other noteworthy thing I can think to point out was for the addLast function, I check if the list is empty, and if it is I just call the addFirst function instead. I created that check before realizing I needed to have first and last point to the same thing, so in hindsite It was probably not needed.
+    
+Question 2 Writeup:
+
+    This ended up being a lot harder to read, but a lot easier to implement. I find code very difficult to read and comprehend when it is composed of mostly single letter variables, and math. So I struggled for a while trying to understand what exactly the example code does. The bright side was that the example queue code from the lecture slides only needed minor changes. I only really needed to change the deque process and I simplified the iterator function, as the one included in the example wasn't working for me. For both instances the hardest part was comprehending what the original code was doing.
+    For the dequeue process I found a random number between the "first" and "last" index; Recorded because the list can be larger than its elements. I then remove the element corresponding to that random number. Then I go through every element past that and slide it over one. Then decrease the recorded "last" index by one to update what index the last element is. This was very straightforward and didn't take much time to come up with. 
+    For the iterator, I didn't really understand what the original code was doing or why it was so complicated. My iterator just goes through the list for as long as the list has elements and returns each element.
+    
+Question 3 Writeup:
+
+    Definitely the easiest of the 3 scripts. All I did for this was take an argument for number of times to deque, make a list from standard input using the resizing array. Then use the dequeue from that function to dequeue the amount of times given in the argument when running the script. Very simple and I'm not sure what more to say about it. 
+    
+Overall thoughts:
+    I really appreciate homework like this. It is very straightforward and does a lot to help me understand what I'm doing. It focusses on a few straightforward concepts, and a couple different ways to do them. The difficulty in these problems were about understanding exactly what the code was doing, as opposed to solving an abstract issue that rarely mentioned programming (which was almost every one of my CS110 projects. Such as creating a program that finds the distance between 2 sets of Genomes. We had no idea what that even meant and most of us never touched a programming language beforehand.) I feel projects like this do so much more to teach and introduce programming concepts. 
+    
+Cited References:
+For both problem 1 and 2 I began by following the code in the basic data structures lecture slides.
+This was the only reference I used. 
+
+    
